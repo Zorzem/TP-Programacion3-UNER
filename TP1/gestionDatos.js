@@ -72,3 +72,45 @@ movies.forEach(function(movie){
   console.log(`Pelicula: ${movie.title} y Puntuación: ${movie.rating} `);
 });
 console.log("------------------------------------------------------------");
+
+// 4. Manipulación de Arrays
+// 4.1 push()
+movies.push({
+  id: 7,
+  title: "Dunkirk",
+  year: 2017,
+  director: "Christopher Nolan",
+  rating: 7.8,
+  genre: "Belico / Drama"
+},
+{
+  id: 8,
+  title: "Oppenheimer",
+  year: 2023,
+  director: "Christopher Nolan",
+  rating: 8.6,
+  genre: "Drama, biográfico, thriller, histórico"
+}
+);
+console.log("Películas agregadas con push():", movies[movies.length - 2].title, "y", movies[movies.length - 1].title);
+
+// 4.2 pop()
+let eliminarConPop = movies.pop();
+console.log("Película eliminada con pop():", eliminarConPop.title);
+
+// 4.3 unshift()
+movies.unshift({
+  id: 0,
+  title: "Back to the Future",
+  year: 1985,
+  director: "Robert Zemeckis",
+  rating: 8.8,
+  genre: "Ciencia ficción / Aventura"
+});
+console.log("Pelicula agregada al inicio con unshift():", movies[0].title);
+
+// 4.4 shift()
+eliminarConShift = movies.shift();
+console.log("Película eliminada con shift():", eliminarConShift.title);
+console.log(movies)
+console.log("------------------------------------------------------------");
