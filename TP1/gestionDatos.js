@@ -40,14 +40,34 @@ const movies = [
     director: "Joss Whedon",
     rating: 8.0,
     genre: "Acción / Ciencia ficción / Aventura"
-  }
+  },
+  {
+    id: 6,
+    title: "The Shawshank Redemption",
+    year: 1994,
+    director: "Frank Darabont",
+    rating: 9.3,
+    genre: "Drama / Clasico / Aventura"
+}
 ];
-
+console.log("------------------------------------------------------------");
 // 2. Operaciones Básicas y Acceso //
-
 //Longitud del array
 console.log("Cantidad total de películas:", movies.length);
 
 //Acceso al nombre del segundo y cuarto elemento del array
 console.log("Película en segundo lugar:", movies[1].title);
 console.log("Película en cuarto lugar:", movies[3].title);
+
+console.log("------------------------------------------------------------");
+// 3. Recorrido del Array: //
+//3.1 for of()
+for (const movie of movies){
+  console.log(`Pelicula: ${movie.title} y Puntuación: ${movie.rating} `);
+}
+console.log("------------------------------------------------------------");
+//3.2 forEach() 
+movies.forEach(function(movie){
+  console.log(`Pelicula: ${movie.title} y Puntuación: ${movie.rating} `);
+});
+console.log("------------------------------------------------------------");
