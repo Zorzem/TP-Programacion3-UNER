@@ -50,6 +50,7 @@ const movies = [
     genre: "Drama / Clasico / Aventura"
 }
 ];
+
 console.log("------------------------------------------------------------");
 // 2. Operaciones Básicas y Acceso //
 //Longitud del array
