@@ -60,13 +60,14 @@ console.log("Cantidad total de películas:", movies.length);
 console.log("Película en segundo lugar:", movies[1].title);
 console.log("Película en cuarto lugar:", movies[3].title);
 
-console.log("------------------------------------------------------------");
+
 // 3. Recorrido del Array
 //3.1 for of()
+console.log("-Ejercicio 3.1-------------------------------------------------------");
 for (const movie of movies) {
-  console.log(`Pelicula: ${movie.title} y Puntuación: ${movie.rating} `);
+  console.log(movie.title,movie.rating);
 }
-console.log("------------------------------------------------------------");
+console.log("-Ejercicio 3.2-------------------------------------------------------");
 //3.2 forEach()
 movies.forEach(function (movie) {
   console.log(`Pelicula: ${movie.title} y Puntuación: ${movie.rating} `);
