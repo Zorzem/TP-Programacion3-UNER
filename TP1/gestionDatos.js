@@ -125,3 +125,17 @@ console.log("------------------------------------------------------------");
 const movieTitles = movies.map((movie) => movie.title);
 console.log("Títulos de películas:", movieTitles);
 console.log("------------------------------------------------------------");
+
+// 4.7 find()
+const movieWithId3 = movies.find((movie) => movie.id === 3);
+if (movieWithId3) {
+  console.log("Película con id 3 encontrada:", movieWithId3.title);
+} else {
+  console.log("No existe una película con id 3");
+}
+console.log("------------------------------------------------------------");
+
+// 4.8 sort()
+const moviesOrderedByRatingDesc = [...movies].sort((a, b) => b.rating - a.rating);
+console.log("Películas ordenadas por puntuación descendente:", moviesOrderedByRatingDesc);
+console.log("------------------------------------------------------------");
