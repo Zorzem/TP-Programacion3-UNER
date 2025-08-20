@@ -55,4 +55,58 @@ Se deben implementar y demostrar diferentes operaciones sobre el array, tales co
 
 ```bash
 node gestionDatos.js
+```
+---
 
+## Segunda Entrega – TP 2
+
+## Objetivos
+- Aplicar los conceptos del **API Fetch** en JavaScript.  
+- Manejar archivos con **FileSystem (fs)**.  
+- Ejecutar el código en el entorno **Node.js**.  
+- Realizar operaciones CRUD (GET, POST, PUT, DELETE) sobre una API real.  
+- Persistir la información obtenida en un archivo local JSON y manipularla.
+
+---
+
+## Descripción
+Este trabajo consiste en desarrollar un script en JavaScript (`apiFetch.js`) que interactúe con la API pública [Fake Store API](https://fakestoreapi.com/).  
+
+El script debe realizar consultas a la API utilizando **fetch** y persistir la información en un archivo JSON con **FileSystem**.  
+Luego, sobre ese archivo, se realizarán operaciones adicionales.
+
+---
+
+## Consigna
+
+### Parte 1 – API Fetch
+- Recuperar la información de todos los productos (**GET**).  
+- Recuperar la información de un número limitado de productos (**GET**).  
+- Persistir los datos obtenidos en un archivo local JSON.  
+- Agregar un nuevo producto (**POST**).  
+- Buscar un producto por su `id` (**GET**).  
+- Eliminar un producto (**DELETE**).  
+- Modificar los datos de un producto (**PUT/UPDATE**).  
+
+### Parte 2 – FileSystem
+- Utilizando el archivo JSON creado en el punto anterior:  
+  - Agregar un producto al archivo local.  
+  - Eliminar los productos cuyo precio sea mayor a un valor determinado.  
+
+Todas las operaciones deben imprimir en consola para verificar su funcionamiento.
+
+---
+
+## Instrucciones de ejecución
+1. Verificar que **Node.js** esté instalado en el equipo.  
+   - Si se utiliza Node.js 18 o superior, `fetch` está disponible de forma nativa.  
+   - Si se utiliza una versión anterior, instalar la dependencia `node-fetch`:  
+     ```bash
+     npm install node-fetch
+     ```
+2. Ubicarse en la carpeta `TP2`.  
+3. Ejecutar el script en consola:  
+
+   ```bash
+   node apiFetch.js
+   ```
