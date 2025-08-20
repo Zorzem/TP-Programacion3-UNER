@@ -89,7 +89,8 @@ function saveToFile(filename, data) {
     saveToFile("productos.json", limitedProducts);
     //Agrego nuevo producto nuevo
     await postProduct(producto_nuevo);
-
+    console.log("Producto agregado",producto_nuevo)
+    
 
   } catch (err) {
     console.error("Ocurrió un error en la ejecución: ", err);
