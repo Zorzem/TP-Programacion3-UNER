@@ -108,5 +108,5 @@ Todas las operaciones deben imprimir en consola para verificar su funcionamiento
 3. Ejecutar el script en consola:  
 
    ```bash
-   node apiFetch.js
+   node fakestoreapi.js
    ```
