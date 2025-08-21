@@ -200,7 +200,8 @@ function updateProduct(id, newData) {
     deleteProductFromFile(idEliminar);
 
     // —— Modificar los datos de un producto (UPDATE)
-    updateProduct(2, { price: 19.99, title: "Hola" });
+    const productoActualizado = updateProduct(2, { price: 19.99, description: "Descripción de prueba" });
+    console.log(productoActualizado);
 
     // —— Eliminar los productos superiores a un determinado valor
     const precioMax = 500;
