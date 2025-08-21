@@ -93,6 +93,26 @@ async function deleteProductById(id) {
   }
 }
 
+// GET producto por ID (con manejo de error)
+async function getProductById(id) {
+  try {
+    const response = await fetch(`${API_URL}/${id}`);
+
+    if (!response.ok) {
+      // La API devuelve 404 si no existe
+      throw new Error(`Producto con ID ${id} no encontrado`);
+    }
+
+    const product = await response.json();
+    console.log("Producto encontrado:", product);
+    return product;
+  } catch (error) {
+    console.error("Error en GET por ID:", error.message);
+    return null; // para que el caller pueda decidir qué hacer si no existe
+  }
+}
+
+
 // Eliminar producto del archivo JSON
 function deleteProductFromFile(id) {
   try {
@@ -106,6 +126,21 @@ function deleteProductFromFile(id) {
   }
 }
 
+// Eliminar productos cuyo precio sea mayor a un valor definido (FileSystem)
+function deleteExpensiveProducts(maxPrice) {
+  try {
+    const productos = JSON.parse(fs.readFileSync("productos.json", "utf-8"));
+    const filtrados = productos.filter(prod => prod.price <= maxPrice);
+
+    fs.writeFileSync("productos.json", JSON.stringify(filtrados, null, 2));
+    console.log(`Se eliminaron productos con precio > ${maxPrice} de productos.json`);
+
+    return filtrados; // 👈 devuelve los productos que quedaron
+  } catch (error) {
+    console.error("Error al eliminar productos caros:", error.message);
+    return null;
+  }
+}
 
 
 
@@ -113,19 +148,32 @@ function deleteProductFromFile(id) {
 // Ejecución
 (async () => {
   try {
+    // GET todos los productos
     await getProducts(); 
     limitedProducts = await getProducts(5); // Limitado a 5 productos
     saveToFile("productos.json", limitedProducts);
-    //Agrego nuevo producto nuevo
+
+    // POST nuevo producto
     await postProduct(producto_nuevo);
-    console.log("Producto agregado",producto_nuevo)
-    // Elimino producto por ID
+    console.log("Producto agregado", producto_nuevo);
+
+    // DELETE por ID (API + archivo local)
     const idEliminar = 4;
     const id = await deleteProductById(idEliminar);
     if (id) {
       deleteProductFromFile(id);
     }
-    
+
+    // GET por ID con manejo de error
+    const idBuscar = 3; // podés cambiarlo para probar otros
+    await getProductById(idBuscar);
+
+    // (opcional para testear error) descomentarpara ver el manejo de error
+    // await getProductById(9999);
+
+    // Eliminar productos caros (FileSystem)
+    const precioMax = 500; // valor que se puede cambiar
+    deleteExpensiveProducts(precioMax);
 
   } catch (err) {
     console.error("Ocurrió un error en la ejecución: ", err);
