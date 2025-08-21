@@ -79,6 +79,35 @@ function saveToFile(filename, data) {
 
 
 
+// DELETE producto por ID
+async function deleteProductById(id) {
+  try {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    console.log("Producto eliminado de la API:", data);
+    return id;
+  } catch (error) {
+    console.error("Error en DELETE Producto:", error);
+  }
+}
+
+// Eliminar producto del archivo JSON
+function deleteProductFromFile(id) {
+  try {
+    const productos = JSON.parse(fs.readFileSync("productos.json", "utf-8"));
+    const nuevosProductos = productos.filter(prod => prod.id !== id);
+
+    fs.writeFileSync("productos.json", JSON.stringify(nuevosProductos, null, 2));
+    console.log(`Producto con ID ${id} eliminado tambien de productos.json`);
+  } catch (error) {
+    console.error("Error al eliminar del archivo:", error);
+  }
+}
+
+
+
 
 
 // Ejecución
@@ -90,6 +119,12 @@ function saveToFile(filename, data) {
     //Agrego nuevo producto nuevo
     await postProduct(producto_nuevo);
     console.log("Producto agregado",producto_nuevo)
+    // Elimino producto por ID
+    const idEliminar = 4;
+    const id = await deleteProductById(idEliminar);
+    if (id) {
+      deleteProductFromFile(id);
+    }
     
 
   } catch (err) {
